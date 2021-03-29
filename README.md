@@ -1,5 +1,9 @@
 # AngularPasswordStrength
 
+| Branch | Status                                                                                                                   |
+| ------ | ------------------------------------------------------------------------------------------------------------------------ |
+| main   | ![main](https://github.com/Karvel/angular-password-strength/workflows/Build,%20Test,%20and%20Lint/badge.svg?branch=main) |
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
 
 ## Development server
