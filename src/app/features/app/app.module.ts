@@ -7,10 +7,16 @@ import {
   components as mainComponents,
 } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from '../../infrastructure/shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, mainComponents],
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    SharedModule.forRoot(),
+    AppRoutingModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
