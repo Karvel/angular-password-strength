@@ -49,5 +49,12 @@ describe('[Unit] PasswordValidator', () => {
       passwordControl.setValue('');
       expect(passwordValidator(passwordControl)).toEqual(null);
     });
+
+    it(`should return null when value is an empty string`, () => {
+      const passwordValidator = PasswordValidator.validPassword();
+      const passwordControl = new FormControl('');
+      passwordControl.setValue('');
+      expect(passwordValidator(passwordControl)).toEqual(null);
+    });
   });
 });
