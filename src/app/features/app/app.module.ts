@@ -7,6 +7,7 @@ import {
   components as mainComponents,
 } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from '../auth/auth.module';
 import { SharedModule } from '../../infrastructure/shared/shared.module';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { SharedModule } from '../../infrastructure/shared/shared.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AuthModule,
     SharedModule.forRoot(),
     AppRoutingModule,
   ],
