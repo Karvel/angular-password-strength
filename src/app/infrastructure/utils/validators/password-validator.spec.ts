@@ -42,10 +42,9 @@ describe('[Unit] PasswordValidator', () => {
   });
 
   describe('validPassword() Not Required', () => {
-    const passwordValidator = PasswordValidator.validPassword(false);
-    const passwordControl = new FormControl('');
-
     it(`should return null when value is an empty string`, () => {
+      const passwordValidator = PasswordValidator.validPassword(false);
+      const passwordControl = new FormControl('');
       passwordControl.setValue('');
       expect(passwordValidator(passwordControl)).toEqual(null);
     });
