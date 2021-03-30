@@ -23,6 +23,7 @@ export class PasswordStrengthComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   public ngOnInit(): void {
+    this.setInitialIndicatorValues();
     this.setupConditionalValidators();
   }
 
@@ -56,7 +57,12 @@ export class PasswordStrengthComponent implements OnInit, OnDestroy {
     CONSTANTS.DIGIT_REGEX.test(controlValue)
       ? this.passwordDigit.setValue(true)
       : this.passwordDigit.setValue(false);
-      }
+  }
+
+  /** Set the indicator values based on the initial password form control value. */
+  private setInitialIndicatorValues(): void {
+    this.setIndicatorValues(this.password.value);
+  }
 
   /** Listens to the password input in the form and updates the requirements list. */
   private setupConditionalValidators(): void {
