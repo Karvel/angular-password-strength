@@ -46,20 +46,22 @@ export class PasswordStrengthComponent implements OnInit, OnDestroy {
     return this.form.get('passwordSpecial') as AbstractControl;
   }
 
+  private setIndicatorValues(controlValue: string): void {
+    controlValue.length >= 8
+      ? this.passwordMin.setValue(true)
+      : this.passwordMin.setValue(false);
+    CONSTANTS.SYMBOL_REGEX.test(controlValue)
+      ? this.passwordSpecial.setValue(true)
+      : this.passwordSpecial.setValue(false);
+    CONSTANTS.DIGIT_REGEX.test(controlValue)
+      ? this.passwordDigit.setValue(true)
+      : this.passwordDigit.setValue(false);
+      }
+
   /** Listens to the password input in the form and updates the requirements list. */
   private setupConditionalValidators(): void {
     const passwordControlSubscription: Subscription = this.password.valueChanges.subscribe(
-      (controlValue: string) => {
-        controlValue.length >= 8
-          ? this.passwordMin.setValue(true)
-          : this.passwordMin.setValue(false);
-        CONSTANTS.SYMBOL_REGEX.test(controlValue)
-          ? this.passwordSpecial.setValue(true)
-          : this.passwordSpecial.setValue(false);
-        CONSTANTS.DIGIT_REGEX.test(controlValue)
-          ? this.passwordDigit.setValue(true)
-          : this.passwordDigit.setValue(false);
-      }
+      (controlValue: string) => this.setIndicatorValues(controlValue)
     );
 
     this.subscriptions.push(passwordControlSubscription);
