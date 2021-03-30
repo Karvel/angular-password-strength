@@ -8,6 +8,7 @@ import { MockModule } from 'ng-mocks';
 import { PasswordStrengthComponent } from './password-strength.component';
 
 describe('[Integration] PasswordStrengthComponent', () => {
+  // TODO: Get working using Spectator
   let component: PasswordStrengthComponent;
   let fixture: ComponentFixture<PasswordStrengthComponent>;
 
