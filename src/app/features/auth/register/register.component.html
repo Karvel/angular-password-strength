@@ -4,33 +4,31 @@
   </mat-card-header>
   <mat-card-content class="card-content">
     <form [formGroup]="form">
+      <div class="register-field">
+        <mat-form-field>
+          <input
+            name="email"
+            id="email"
+            type="text"
+            matInput
+            placeholder="Email"
+            formControlName="email"
+            required
+          />
+        </mat-form-field>
+      </div>
       <div>
-        <div>
-          <mat-form-field>
-            <input
-              name="email"
-              id="email"
-              type="text"
-              matInput
-              placeholder="Email"
-              formControlName="email"
-              required
-            />
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input
-              name="password"
-              id="password"
-              type="password"
-              matInput
-              placeholder="Password"
-              formControlName="password"
-              required
-            />
-          </mat-form-field>
-        </div>
+        <mat-form-field>
+          <input
+            name="password"
+            id="password"
+            type="password"
+            matInput
+            placeholder="Password"
+            formControlName="password"
+            required
+          />
+        </mat-form-field>
       </div>
       <button
         class="submit-button"
