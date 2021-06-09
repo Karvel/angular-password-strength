@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
     const form = this.fb.group({
       email: [''],
       password: [
-        'testtest',
+        '',
         Validators.compose([PasswordValidator.validPassword(true)]),
       ],
       passwordMin: { value: false, disabled: true },
