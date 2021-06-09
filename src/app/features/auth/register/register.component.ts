@@ -1,5 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { PasswordValidator } from 'src/app/infrastructure/utils/validators/password-validator';
 
 @Component({
   templateUrl: './register.component.html',
@@ -14,11 +16,17 @@ export class RegisterComponent implements OnInit {
   public ngOnInit(): void {
     this.form = this.createForm();
   }
-
   private createForm(): FormGroup {
     const form = this.fb.group({
       email: [''],
-      password: [''],
+      password: [
+        '',
+        Validators.compose([PasswordValidator.validPassword(true)]),
+      ],
+      passwordMin: { value: false, disabled: true },
+      passwordDigit: { value: false, disabled: true },
+      passwordSpecial: { value: false, disabled: true },
+      passwordSlider: { value: 0, disabled: true },
     });
 
     return form;
