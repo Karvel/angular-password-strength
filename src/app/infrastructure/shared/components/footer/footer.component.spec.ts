@@ -1,30 +1,16 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { createComponentFactory, Spectator } from '@ngneat/spectator';
 
-import { environment } from '@env/environment.test';
 import { FooterComponent } from './footer.component';
-import { Logger } from '@utils/logger';
 
-!environment.testIntegration
-  ? Logger.log('Integration skipped')
-  : describe('[Integration] FooterComponent', () => {
-      let component: FooterComponent;
-      let fixture: ComponentFixture<FooterComponent>;
+describe('[Integration] FooterComponent', () => {
+  let spectator: Spectator<FooterComponent>;
+  const createComponent = createComponentFactory({
+    component: FooterComponent,
+  });
 
-      beforeEach(
-        waitForAsync(() => {
-          TestBed.configureTestingModule({
-            declarations: [FooterComponent],
-          }).compileComponents();
-        }),
-      );
+  beforeEach(() => (spectator = createComponent()));
 
-      beforeEach(() => {
-        fixture = TestBed.createComponent(FooterComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-      });
-
-      it('should create', () => {
-        expect(component).toBeTruthy();
-      });
-    });
+  it('should create', () => {
+    expect(spectator.component).toBeTruthy();
+  });
+});
