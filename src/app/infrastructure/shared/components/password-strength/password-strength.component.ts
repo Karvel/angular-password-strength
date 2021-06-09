@@ -21,7 +21,7 @@ export class PasswordStrengthComponent implements OnInit, OnDestroy {
   @Input() public form: FormGroup = new FormGroup({});
 
   public strengthHint = {
-    strength: '',
+    message: '',
     color: 'red',
   };
 
@@ -89,19 +89,19 @@ export class PasswordStrengthComponent implements OnInit, OnDestroy {
     );
     switch (this.passwordSlider.value) {
       case 0:
-        this.strengthHint.strength = 'Weak';
+        this.strengthHint.message = 'Weak';
         this.strengthHint.color = 'red';
         break;
       case 1:
-        this.strengthHint.strength = 'Okay';
+        this.strengthHint.message = 'Okay';
         this.strengthHint.color = 'orange';
         break;
       case 2:
-        this.strengthHint.strength = 'Good';
+        this.strengthHint.message = 'Good';
         this.strengthHint.color = 'yellow';
         break;
       case 3:
-        this.strengthHint.strength = 'Strong';
+        this.strengthHint.message = 'Strong';
         this.strengthHint.color = 'green';
         break;
     }
