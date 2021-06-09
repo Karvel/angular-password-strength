@@ -9,8 +9,8 @@ import { AbstractControl, FormGroup } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
 
-import { CONSTANTS } from 'src/app/infrastructure/utils/constants';
-import { IHint } from 'src/app/infrastructure/models/hint';
+import { CONSTANTS } from '../../../utils/constants';
+import { IHint } from '../../../models/hint';
 
 @Component({
   selector: 'app-password-strength',

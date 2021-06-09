@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { PasswordValidator } from 'src/app/infrastructure/utils/validators/password-validator';
+import { PasswordValidator } from '../../../infrastructure/utils/validators/password-validator';
 
 @Component({
   templateUrl: './register.component.html',
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
     const form = this.fb.group({
       email: [''],
       password: [
-        '',
+        'testtest',
         Validators.compose([PasswordValidator.validPassword(true)]),
       ],
       passwordMin: { value: false, disabled: true },

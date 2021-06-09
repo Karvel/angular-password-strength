@@ -2,7 +2,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { createComponentFactory, Spectator } from '@ngneat/spectator';
 import { MockComponent } from 'ng-mocks';
-import { FooterComponent } from 'src/app/infrastructure/shared/components/footer/footer.component';
+import { FooterComponent } from '../../infrastructure/shared/components/footer/footer.component';
 
 import { AppComponent } from './app.component';
 
