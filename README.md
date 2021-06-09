@@ -1,5 +1,7 @@
 # AngularPasswordStrength
 
+This is the example code repository that goes with the article I wrote [here](https://hapax-legomenon.net/2021/06/making-a-password-strength-component-in-angular/).
+
 | Branch | Status                                                                                                                   |
 | ------ | ------------------------------------------------------------------------------------------------------------------------ |
 | main   | ![main](https://github.com/Karvel/angular-password-strength/workflows/Build,%20Test,%20and%20Lint/badge.svg?branch=main) |
