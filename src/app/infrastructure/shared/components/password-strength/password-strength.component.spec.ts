@@ -134,4 +134,28 @@ describe('[Integration] PasswordStrengthComponent', () => {
     updateForm('', 'testtest@1');
     expect(component.form.get('passwordSlider')?.value).toBe(3);
   });
+
+  it('should set hintStrength to a message of and color of when the passwordSlider is 0', () => {
+    updateForm('', '');
+    expect(component.strengthHint.message).toBe('Weak');
+    expect(component.strengthHint.color).toBe('red');
+  });
+
+  it('should set hintStrength to a message of and color of when the passwordSlider is 1', () => {
+    updateForm('', 'testtest');
+    expect(component.strengthHint.message).toBe('Okay');
+    expect(component.strengthHint.color).toBe('orange');
+  });
+
+  it('should set hintStrength to a message of and color of when the passwordSlider is 2', () => {
+    updateForm('', 'testtest1');
+    expect(component.strengthHint.message).toBe('Good');
+    expect(component.strengthHint.color).toBe('yellow');
+  });
+
+  it('should set hintStrength to a message of and color of when the passwordSlider is 3', () => {
+    updateForm('', 'testtest@1');
+    expect(component.strengthHint.message).toBe('Strong');
+    expect(component.strengthHint.color).toBe('green');
+  });
 });
