@@ -20,6 +20,10 @@ import { CONSTANTS } from 'src/app/infrastructure/utils/constants';
 export class PasswordStrengthComponent implements OnInit, OnDestroy {
   @Input() public form: FormGroup = new FormGroup({});
 
+  public strengthHint = {
+    strength: '',
+  };
+
   private subscriptions: Subscription[] = [];
 
   public ngOnInit(): void {
@@ -82,6 +86,20 @@ export class PasswordStrengthComponent implements OnInit, OnDestroy {
         passwordSliderSpecialValue +
         passwordSliderDigitValue
     );
+    switch (this.passwordSlider.value) {
+      case 0:
+        this.strengthHint.strength = 'Weak';
+        break;
+      case 1:
+        this.strengthHint.strength = 'Okay';
+        break;
+      case 2:
+        this.strengthHint.strength = 'Good';
+        break;
+      case 3:
+        this.strengthHint.strength = 'Strong';
+        break;
+    }
   }
 
   /** Set the indicator values based on the initial password form control value. */
