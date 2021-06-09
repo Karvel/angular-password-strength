@@ -22,6 +22,7 @@ export class PasswordStrengthComponent implements OnInit, OnDestroy {
 
   public strengthHint = {
     strength: '',
+    color: 'red',
   };
 
   private subscriptions: Subscription[] = [];
@@ -89,15 +90,19 @@ export class PasswordStrengthComponent implements OnInit, OnDestroy {
     switch (this.passwordSlider.value) {
       case 0:
         this.strengthHint.strength = 'Weak';
+        this.strengthHint.color = 'red';
         break;
       case 1:
         this.strengthHint.strength = 'Okay';
+        this.strengthHint.color = 'orange';
         break;
       case 2:
         this.strengthHint.strength = 'Good';
+        this.strengthHint.color = 'yellow';
         break;
       case 3:
         this.strengthHint.strength = 'Strong';
+        this.strengthHint.color = 'green';
         break;
     }
   }
