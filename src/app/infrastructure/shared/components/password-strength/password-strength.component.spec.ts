@@ -2,6 +2,7 @@ import { ComponentFixture, waitForAsync, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { MockModule } from 'ng-mocks';
 
@@ -20,6 +21,7 @@ describe('[Integration] PasswordStrengthComponent', () => {
           ReactiveFormsModule,
           MockModule(MatFormFieldModule),
           MockModule(MatCheckboxModule),
+          MockModule(MatSliderModule),
         ],
       }).compileComponents();
     })
@@ -34,6 +36,7 @@ describe('[Integration] PasswordStrengthComponent', () => {
       passwordMin: new FormControl(false),
       passwordSpecial: new FormControl(false),
       passwordDigit: new FormControl(false),
+      passwordSlider: new FormControl(0),
     });
 
     fixture.detectChanges();
@@ -90,10 +93,45 @@ describe('[Integration] PasswordStrengthComponent', () => {
     expect(component.form.get('passwordDigit')?.value).toBe(false);
   });
 
-  it('should set set passwordMin, passwordSpecial, and passwordDigit to true when given a password that meets requirements', () => {
+  it('should set passwordMin, passwordSpecial, and passwordDigit to true when given a password that meets requirements', () => {
     updateForm('', 'testtest@1');
     expect(component.form.get('passwordMin')?.value).toBe(true);
     expect(component.form.get('passwordSpecial')?.value).toBe(true);
     expect(component.form.get('passwordDigit')?.value).toBe(true);
+  });
+
+  it('should set passwordSlider to 0 when given an empty string for password', () => {
+    updateForm('', '');
+    expect(component.form.get('passwordSlider')?.value).toBe(0);
+  });
+
+  it('should set passwordSlider to 1 when given a string only password of sufficient length', () => {
+    updateForm('', 'testtest');
+    expect(component.form.get('passwordSlider')?.value).toBe(1);
+  });
+
+  it('should set passwordSlider to 1 when given a short password with only a special character', () => {
+    updateForm('', '@');
+    expect(component.form.get('passwordSlider')?.value).toBe(1);
+  });
+
+  it('should set passwordSlider to 1 when given a short digit only password', () => {
+    updateForm('', '1');
+    expect(component.form.get('passwordSlider')?.value).toBe(1);
+  });
+
+  it('should set passwordSlider to 2 when given a password of sufficient length with a special character', () => {
+    updateForm('', 'testtest1');
+    expect(component.form.get('passwordSlider')?.value).toBe(2);
+  });
+
+  it('should set passwordSlider to 2 when given a string only password of sufficient length  with a digit', () => {
+    updateForm('', 'testtest@');
+    expect(component.form.get('passwordSlider')?.value).toBe(2);
+  });
+
+  it('should set passwordSlider to 3 when given a password that meets requirements', () => {
+    updateForm('', 'testtest@1');
+    expect(component.form.get('passwordSlider')?.value).toBe(3);
   });
 });

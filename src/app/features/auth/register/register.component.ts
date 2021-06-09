@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
       passwordMin: { value: false, disabled: true },
       passwordDigit: { value: false, disabled: true },
       passwordSpecial: { value: false, disabled: true },
+      passwordSlider: { value: 0, disabled: true },
     });
 
     return form;

@@ -47,16 +47,41 @@ export class PasswordStrengthComponent implements OnInit, OnDestroy {
     return this.form.get('passwordSpecial') as AbstractControl;
   }
 
+  public get passwordSlider(): AbstractControl {
+    return this.form.get('passwordSlider') as AbstractControl;
+  }
+
   private setIndicatorValues(controlValue: string): void {
-    controlValue.length >= 8
-      ? this.passwordMin.setValue(true)
-      : this.passwordMin.setValue(false);
-    CONSTANTS.SYMBOL_REGEX.test(controlValue)
-      ? this.passwordSpecial.setValue(true)
-      : this.passwordSpecial.setValue(false);
-    CONSTANTS.DIGIT_REGEX.test(controlValue)
-      ? this.passwordDigit.setValue(true)
-      : this.passwordDigit.setValue(false);
+    let passwordSliderMinValue = 0;
+    let passwordSliderSpecialValue = 0;
+    let passwordSliderDigitValue = 0;
+
+    if (controlValue.length >= 8) {
+      this.passwordMin.setValue(true);
+      passwordSliderMinValue = 1;
+    } else {
+      this.passwordMin.setValue(false);
+      passwordSliderMinValue = 0;
+    }
+    if (CONSTANTS.SYMBOL_REGEX.test(controlValue)) {
+      this.passwordSpecial.setValue(true);
+      passwordSliderSpecialValue = 1;
+    } else {
+      this.passwordSpecial.setValue(false);
+      passwordSliderSpecialValue = 0;
+    }
+    if (CONSTANTS.DIGIT_REGEX.test(controlValue)) {
+      this.passwordDigit.setValue(true);
+      passwordSliderDigitValue = 1;
+    } else {
+      this.passwordDigit.setValue(false);
+      passwordSliderDigitValue = 0;
+    }
+    this.passwordSlider.setValue(
+      passwordSliderMinValue +
+        passwordSliderSpecialValue +
+        passwordSliderDigitValue
+    );
   }
 
   /** Set the indicator values based on the initial password form control value. */
