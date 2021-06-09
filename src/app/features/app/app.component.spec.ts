@@ -1,6 +1,8 @@
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { createComponentFactory, Spectator } from '@ngneat/spectator';
+import { MockComponent } from 'ng-mocks';
+import { FooterComponent } from 'src/app/infrastructure/shared/components/footer/footer.component';
 
 import { AppComponent } from './app.component';
 
@@ -8,6 +10,7 @@ describe('[Integration] AppComponent', () => {
   let spectator: Spectator<AppComponent>;
   const createComponent = createComponentFactory({
     component: AppComponent,
+    declarations: [MockComponent(FooterComponent)],
     imports: [RouterTestingModule],
   });
 

@@ -4,8 +4,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { createComponentFactory, Spectator } from '@ngneat/spectator';
 import { MockComponent, MockModule } from 'ng-mocks';
-import { PasswordStrengthComponent } from 'src/app/infrastructure/shared/components/password-strength/password-strength.component';
 
+import { PasswordStrengthComponent } from 'src/app/infrastructure/shared/components/password-strength/password-strength.component';
 import { RegisterComponent } from './register.component';
 
 describe('[Integration] RegisterComponent', () => {
