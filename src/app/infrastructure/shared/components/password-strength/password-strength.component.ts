@@ -10,6 +10,7 @@ import { AbstractControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { CONSTANTS } from 'src/app/infrastructure/utils/constants';
+import { IHint } from 'src/app/infrastructure/models/hint';
 
 @Component({
   selector: 'app-password-strength',
@@ -20,7 +21,7 @@ import { CONSTANTS } from 'src/app/infrastructure/utils/constants';
 export class PasswordStrengthComponent implements OnInit, OnDestroy {
   @Input() public form: FormGroup = new FormGroup({});
 
-  public strengthHint = {
+  public strengthHint: IHint = {
     message: '',
     color: 'red',
   };
