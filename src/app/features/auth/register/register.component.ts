@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
       passwordSlider: { value: 0, disabled: true },
     },
     {
-      validator: Validators.compose([
+      validators: Validators.compose([
         MatchFieldValidator.validFieldMatch('password', 'confirmPassword', 'Password'),
       ]),
     });
