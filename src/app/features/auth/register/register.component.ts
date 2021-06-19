@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { MatchFieldValidator } from 'src/app/infrastructure/utils/validators/match-field-validator';
+import { MatchFieldValidator } from '../../../infrastructure/utils/validators/match-field-validator';
 import { PasswordValidator } from '../../../infrastructure/utils/validators/password-validator';
 
 @Component({
