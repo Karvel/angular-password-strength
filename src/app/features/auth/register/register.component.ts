@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { MatchFieldValidator } from 'src/app/infrastructure/utils/validators/match-field-validator';
 import { PasswordValidator } from '../../../infrastructure/utils/validators/password-validator';
 
 @Component({
@@ -23,10 +24,16 @@ export class RegisterComponent implements OnInit {
         '',
         Validators.compose([PasswordValidator.validPassword(true)]),
       ],
+      confirmPassword: [''],
       passwordMin: { value: false, disabled: true },
       passwordDigit: { value: false, disabled: true },
       passwordSpecial: { value: false, disabled: true },
       passwordSlider: { value: 0, disabled: true },
+    },
+    {
+      validator: Validators.compose([
+        MatchFieldValidator.validFieldMatch('password', 'confirmPassword', 'Password'),
+      ]),
     });
 
     return form;

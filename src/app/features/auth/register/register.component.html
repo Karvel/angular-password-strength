@@ -26,8 +26,28 @@
             matInput
             placeholder="Password"
             formControlName="password"
+          />
+          <mat-error *ngIf="form.get('password')?.errors">
+            <ng-container *ngFor="let error of form.get('password')?.errors | keyvalue">
+              <div *ngIf="error.key !== 'required'">{{ error.value }}</div>
+            </ng-container>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            name="confirmPassword"
+            id="confirmPassword"
+            type="password"
+            matInput
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
             required
           />
+          <mat-error *ngIf="form.get('confirmPassword')?.errors">
+            <ng-container *ngFor="let error of form.get('confirmPassword')?.errors | keyvalue">
+              <div *ngIf="error.key !== 'required'">{{ error.value }}</div>
+            </ng-container>
+          </mat-error>
         </mat-form-field>
       </div>
       <button
